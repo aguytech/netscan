@@ -1,0 +1,101 @@
+ /* The toaster - position it at the bottom and in the middle of the screen */
+#toaster {
+	opacity: 0; /* Hidden by default. Visible on click */
+	min-width: 250px; /* Set a default minimum width */
+	margin-left: -125px; /* Divide value of min-width by 2 */
+	color: #fff; /* White text color */
+	background-color: #7e77fd; /* Black background color */
+	box-shadow: 0 0 12px #999;
+	text-align: left;
+	border-radius: 6px; /* Rounded borders */
+	padding: 10px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 1; /* Add a z-index if needed */
+	left: 50%; /* Center the toaster */
+	top: -40px; /* 40px from the bottom */
+}
+#toaster .toaster-info {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=) !important;
+	background-repeat: no-repeat;
+	padding-left: 5px;
+}
+#toaster .toaster-title {
+	padding-left: 30px;
+	font-weight: 800;
+}
+
+/* Show the toaster when clicking on a button (class added with JavaScript) */
+#toaster.show {
+	/*animation: toaster_shake 4s linear 0.5s;*/
+	animation: toaster_rotate 5s linear 0.5s;
+}
+
+/* animate with translate and shake
+*/
+@keyframes toaster_shake {
+	0% {top: 0; opacity: 0;}
+	6% {top: 40px; opacity: 0.95;}
+	30% {top: 40px; opacity: 0.95;  left: 50%;}
+	32% {top: 40px; opacity: 0.95; left: 48%;}
+	34% {top: 40px; opacity: 0.95; left: 52%;}
+	36% {top: 40px; opacity: 0.95; left: 50%;}
+	95% {top: 40px; opacity: 0.95;}
+	100% {top: -40px; opacity: 0;}
+}
+
+@-webkit-keyframes toaster_shake {
+	0% {top: 0; opacity: 0;}
+	6% {top: 40px; opacity: 0.95;}
+	30% {top: 40px; opacity: 0.95;  left: 50%;}
+	32% {top: 40px; opacity: 0.95; left: 48%;}
+	34% {top: 40px; opacity: 0.95; left: 52%;}
+	36% {top: 40px; opacity: 0.95; left: 50%;}
+	95% {top: 40px; opacity: 0.95;}
+	100% {top: -40px; opacity: 0;}
+}
+
+/* animate with translate and shake
+*/
+@keyframes toaster_rotate {
+	0% {top: 0; opacity: 0;}
+	5% {top: 40px; opacity: 0.95;}
+	40% {transform: rotate(0deg);}
+	42% {transform: rotate(-15deg);}
+	44% {transform: rotate(+15deg);}
+	46% {transform: rotate(0deg);}
+	95% {top: 40px; opacity: 0.95; left: 50%;}
+	100% {top: 40px; opacity: 0; left: 120%;}
+}
+
+@-webkit-keyframes toaster_rotate {
+	0% {top: 0; opacity: 0;}
+	5% {top: 40px; opacity: 0.95;}
+	40% {transform: rotate(0deg);}
+	42% {transform: rotate(-15deg);}
+	44% {transform: rotate(+15deg);}
+	46% {transform: rotate(0deg);}
+	95% {top: 40px; opacity: 0.95; left: 50%;}
+	100% {top: 40px; opacity: 0; left: 120%;}
+}
+
+/* animate with translate and shake
+*/
+@keyframes toaster_rotate3d {
+	0% {top: 0; opacity: 0;}
+	5% {top: 40px; opacity: 0.95;}
+	40% {transform: rotateY(0deg);}
+	45% {transform: rotateY(360deg);}
+	50% {transform: rotateY(0deg);}
+	95% {top: 40px; opacity: 0.95; left: 50%;}
+	100% {top: 40px; opacity: 0; left: 120%;}
+}
+
+@-webkit-keyframes toaster_rotate3d {
+	0% {top: 0; opacity: 0;}
+	5% {top: 40px; opacity: 0.95;}
+	40% {transform: rotateY(0deg);}
+	45% {transform: rotateY(360deg);}
+	50% {transform: rotateY(0deg);}
+	95% {top: 40px; opacity: 0.95; left: 50%;}
+	100% {top: 40px; opacity: 0; left: 120%;}
+}

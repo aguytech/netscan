@@ -1,0 +1,24 @@
+# rotate every week and keep 5 weeks
+/var/log/netscan/netscan.log
+/var/log/netscan/netscan.err
+{
+	rotate 5
+	weekly
+	missingok
+	notifempty
+	delaycompress
+	compress
+	create
+}
+
+# rotate every day and keep 15 days
+/var/log/netscan/netscan.debug
+{
+	rotate 14
+	daily
+	missingok
+	notifempty
+	delaycompress
+	compress
+	create
+}
