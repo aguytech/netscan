@@ -1,0 +1,47 @@
+# Configuration files or netscan
+#
+# Deployment:
+# cd $installation_path
+# cp netscan /usr/local/bin/ && chmod +x /usr/local/bin/netscan
+# cp netscan-etc /etc/netscan
+# cp netscan-logrotate /etc/logrotate.d/netscan
+# cp netscan-cron /etc/cron.d/netscan && chmod +x /etc/cron.d/netscan
+# systemctl restart cron.service
+#
+
+#### Here is manual configuration:
+# The following configuration is overridden by the one passed by arguments to the netscan script
+# uncomment and modify
+#
+interface_default="" # "wlan0"
+ipsrange_default="" # "192.168.0.0/24"
+url_default=""
+filelog_default="/var/log/netscan/$(basename $0).log"
+ipsexclude_default="" # "192.168.0.1,192.168.0.100,192.168.0.101"
+macsexclude_default="" # "b8:27:eb:48:ae:35"
+
+
+# Defines the delay to keep valid the key, is a exponent of 10 seconds
+# According this value with the same variable in config.php (netscan backend)
+key_time_delay=2
+
+# Generate a secure key to recording
+# According with the same function in config.php (netscan backend)
+_key_gen() {
+	base=`date +%s`
+	key=`echo -n "${base:0:-${key_time_delay}}" | sha256sum`
+	key=${key:5:20}
+	echo $key
+}
+
+# Defines whether debug logs are written or not. "y" to write the debug log, null to not do so
+debug="y"
+
+#### Defines command paths
+# Change following values if necessary
+#cmd_ip="/bin/ip"
+#cmd_arpscan="/usr/sbin/arp-scan"
+#cmd_nmap="nmap"
+#cmd_nbtscan="nbtscan"
+#cmd_jq="jq"
+#cmd_curl="curl"

@@ -1,5 +1,6 @@
-var toaster_url = "https://presence.coworking-lannion.fr/read.php?query=last&arg=count";
+var toaster_url = "";
 
+// get data from URL toaster_url
 function toaster_get(toaster_url) {
 	httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = function() {
@@ -13,7 +14,7 @@ function toaster_get(toaster_url) {
 	httpRequest.send();
 }
 
-
+// append element in DOM and class to #toaster
 function toaster(data) {
 	//console.log("toaster> data: " + data);
 	if (data == 0) return false;

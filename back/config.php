@@ -3,11 +3,12 @@
  * Configuration
  */
 
-# array of authorized ip addresses alowed to connect to record & read data
+# Array of authorized ip addresses alowed to connect to record & read data
 # if empty, no filters ip adresses
 $ips_read_authorized = array();
 
-# defines the delay to keep valid the key, is a exponent of 10 seconds
+# Defines the delay to keep valid the key, is a exponent of 10 seconds
+# Keep the same value with the same variable in /etc/netscan-etc for netscan
 $key_time_delay = 2;
 # defines the search time for the latest logs in seconds.
 # default is equal to 1 * (periods of cron in seconds ) + 60
@@ -33,8 +34,8 @@ $dbt = array(
 # if you change the definition of this key, please agjust the definition of key in netscan bash script
 function key_gen($key_time_delay)
 {
-	key_time = substr(time(), 0, -$key_time_delay);
-	key_hash = md5($key_time);
+	$key_time = substr(time(), 0, -$key_time_delay);
+	$key_hash = hash('sha256', $key_time);
 	return substr($key_hash, 5, 20);
 }
 
