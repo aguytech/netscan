@@ -4,13 +4,14 @@
 #*/2 * * * * root /usr/local/bin/netscan
 #
 # Synchronize every 4 minutes, every hour between 7h & 19h, every day
-#*/4 * 7-19 * * 1-5 root /usr/local/bin/netscan
+#*/4 7-19 * * 1-5 root /usr/local/bin/netscan
 #
 # Synchronize every 4 minutes, every hour between 7h & 19h, every day between monday to friday
-#*/4 * 7-19 * * 1-5 root /usr/local/bin/netscan
+#*/4 7-19 * * 1-5 root /usr/local/bin/netscan
 #
 # Example with options for a single scan on wireless network
-#*/4 * 7-19 * * 1-5 root /usr/local/bin/netscan "interface='wlan0' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101'"
+#*/4 7-19 * * 1-5 root /usr/local/bin/netscan "interface='wlan0' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101'"
 #
 # Example with options for a dual scan on a wired network 'eth0' and a wireless network 'wlan0'
-#*/4 * 7-19 * * 1-5 root /usr/local/bin/netscan "interface='eth0' ipsrange='128.20.228.0/27' ipsexclude='128.20.228.1,128.20.228.2,128.20.228.3,128.20.228.29,128.20.228.30'" "interface='wlan0' ipsrange='192.168.0.0/24' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101'" # each 4 mn all days between 7h to 20h
+#*/4 7-19 * * 1-5 root /usr/local/bin/netscan "interface='eth0' ipsrange='128.20.228.0/27' ipsexclude='128.20.228.1,128.20.228.2,128.20.228.3,128.20.228.29,128.20.228.30'" "interface='wlan0' ipsrange='192.168.0.0/24' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101'"
+

@@ -10,7 +10,7 @@
 	border-radius: 6px; /* Rounded borders */
 	padding: 10px; /* Padding */
 	position: fixed; /* Sit on top of the screen */
-	z-index: 1; /* Add a z-index if needed */
+	z-index: 100; /* Add a z-index if needed */
 	left: 50%; /* Center the toaster */
 	top: -40px; /* 40px from the bottom */
 }
@@ -27,29 +27,29 @@
 /* Show the toaster when clicking on a button (class added with JavaScript) */
 #toaster.show {
 	/*animation: toaster_shake 4s linear 0.5s;*/
-	animation: toaster_rotate 5s linear 0.5s;
+	animation: toaster_rotate 4s linear 0.5s;
 }
 
 /* animate with translate and shake
 */
 @keyframes toaster_shake {
 	0% {top: 0; opacity: 0;}
-	6% {top: 40px; opacity: 0.95;}
-	30% {top: 40px; opacity: 0.95;  left: 50%;}
-	32% {top: 40px; opacity: 0.95; left: 48%;}
-	34% {top: 40px; opacity: 0.95; left: 52%;}
-	36% {top: 40px; opacity: 0.95; left: 50%;}
-	95% {top: 40px; opacity: 0.95;}
+	6% {top: 80px; opacity: 0.95;}
+	30% {left: 50%;}
+	32% {left: 48%;}
+	34% {left: 52%;}
+	36% {left: 50%;}
+	95% {top: 80px; opacity: 0.95;}
 	100% {top: -40px; opacity: 0;}
 }
 
 @-webkit-keyframes toaster_shake {
 	0% {top: 0; opacity: 0;}
 	6% {top: 40px; opacity: 0.95;}
-	30% {top: 40px; opacity: 0.95;  left: 50%;}
-	32% {top: 40px; opacity: 0.95; left: 48%;}
-	34% {top: 40px; opacity: 0.95; left: 52%;}
-	36% {top: 40px; opacity: 0.95; left: 50%;}
+	30% {left: 50%;}
+	32% {left: 48%;}
+	34% {left: 52%;}
+	36% {left: 50%;}
 	95% {top: 40px; opacity: 0.95;}
 	100% {top: -40px; opacity: 0;}
 }
@@ -58,44 +58,44 @@
 */
 @keyframes toaster_rotate {
 	0% {top: 0; opacity: 0;}
-	5% {top: 40px; opacity: 0.95;}
+	5% {top: 80px; opacity: 0.95;}
 	40% {transform: rotate(0deg);}
 	42% {transform: rotate(-15deg);}
 	44% {transform: rotate(+15deg);}
 	46% {transform: rotate(0deg);}
-	95% {top: 40px; opacity: 0.95; left: 50%;}
-	100% {top: 40px; opacity: 0; left: 120%;}
+	95% {top: 80px; opacity: 0.95; left: 50%;}
+	100% {top: 80px; opacity: 0; left: 120%;}
 }
 
 @-webkit-keyframes toaster_rotate {
 	0% {top: 0; opacity: 0;}
-	5% {top: 40px; opacity: 0.95;}
+	5% {top: 80px; opacity: 0.95;}
 	40% {transform: rotate(0deg);}
 	42% {transform: rotate(-15deg);}
 	44% {transform: rotate(+15deg);}
 	46% {transform: rotate(0deg);}
-	95% {top: 40px; opacity: 0.95; left: 50%;}
-	100% {top: 40px; opacity: 0; left: 120%;}
+	95% {top: 80px; opacity: 0.95; left: 50%;}
+	100% {top: 80px; opacity: 0; left: 120%;}
 }
 
 /* animate with translate and shake
 */
 @keyframes toaster_rotate3d {
 	0% {top: 0; opacity: 0;}
-	5% {top: 40px; opacity: 0.95;}
+	5% {top: 80px; opacity: 0.95;}
 	40% {transform: rotateY(0deg);}
 	45% {transform: rotateY(360deg);}
 	50% {transform: rotateY(0deg);}
-	95% {top: 40px; opacity: 0.95; left: 50%;}
-	100% {top: 40px; opacity: 0; left: 120%;}
+	95% {top: 80px; opacity: 0.95; left: 50%;}
+	100% {top: 80px; opacity: 0; left: 120%;}
 }
 
 @-webkit-keyframes toaster_rotate3d {
 	0% {top: 0; opacity: 0;}
-	5% {top: 40px; opacity: 0.95;}
+	5% {top: 80px; opacity: 0.95;}
 	40% {transform: rotateY(0deg);}
 	45% {transform: rotateY(360deg);}
 	50% {transform: rotateY(0deg);}
-	95% {top: 40px; opacity: 0.95; left: 50%;}
-	100% {top: 40px; opacity: 0; left: 120%;}
+	95% {top: 80px; opacity: 0.95; left: 50%;}
+	100% {top: 80px; opacity: 0; left: 120%;}
 }
