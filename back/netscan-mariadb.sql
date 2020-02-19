@@ -41,7 +41,8 @@ CREATE TABLE `netscan_computer` (
   `id_member` int(10) UNSIGNED NOT NULL,
   `mac` varchar(18) COLLATE utf8_bin NOT NULL,
   `hostname` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` set('desktop','laptop','mobile') CHARACTER SET utf8 NOT NULL
+  `type` set('desktop','laptop','mobile') CHARACTER SET utf8 NOT NULL DEFAULT 'laptop',
+  `network` set('wired','wireless') CHARACTER SET utf8 NOT NULL DEFAULT 'wireless'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------

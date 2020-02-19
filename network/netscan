@@ -42,8 +42,8 @@ _init_cmd() {
 	for cmd in ${1}; do
 		cmd_path=`whereis -b ${cmd} 2>/dev/null | sed -n "s|${cmd}: \([^ ]\+\).*|\1|p"`
 		if [ "${cmd_path}" ]; then
-			#eval "cmd_${cmd}=${cmd_path}"
 			eval "cmd_${cmd//-/}=${cmd_path}"
+			#_log_debug "cmd_${cmd//-/}=${cmd_path}"
 		else
 			cmd_miss="${cmd_miss} ${cmd}"
 		fi
@@ -64,9 +64,15 @@ _init() {
 	! [ -f "$file" ] && echo "error - unable to find file: '$file'" && exit 1
 	source "$file"
 
+	filelog="${filelog:-$filelog_default}"
+	filelogerr="${filelog%.log}.err"
+	filedebug="${filelog%.log}.debug"
+
+	_init_cmd "ip arp-scan nmap nbtscan jq curl"
+
 	# for ip version >= ss190107, with -j option
 	#interface_default="${interface_default:-$(${cmd_ip} -4 -j route show to default|${cmd_jq} -r '.[0].dev')}"
-	interface_default="${interface_default:-$(${cmd_ip} -4 -o route show to default|cut -d' ' -f5)}"
+	interface_default="${interface_default:-$($cmd_ip -4 -o route show to default|cut -d' ' -f5|head -n1)}"
 	interface="${interface:-$interface_default}"
 
 	ipsrange=${ipsrange:-$ipsrange_default}
@@ -84,10 +90,6 @@ _init() {
 	macsexclude="${macsexclude:-$macsexclude_default}"
 	url="${url:-$url_default}"
 
-	filelog="${filelog:-$filelog_default}"
-	filelogerr="${filelog%.log}.err"
-	filedebug="${filelog%.log}.debug"
-
 	_log_debug "\n$(date +%Y%m%d-%T) ---------- scan ${scan_num}"
 	_log_debug "\$*="$*
 	_log_debug "interface=$interface"
@@ -96,7 +98,6 @@ _init() {
 	_log_debug "ipbase=$ipbase"
 	_log_debug "ipsexclude=$ipsexclude"
 	_log_debug "macsexclude=$macsexclude"
-
 	#_log_debug "url=$url"
 	#_log_debug "filelog=$filelog"
 	#_log_debug "filelogerr=$filelogerr"
@@ -105,8 +106,6 @@ _init() {
 	# create logs path
 	path="$(dirname $filelog)"
 	! [ -d "$path" ] && mkdir -p "$path"
-
-	_init_cmd "ip arp-scan nmap nbtscan jq curl"
 }
 
 # Scan network with ARP
