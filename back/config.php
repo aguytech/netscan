@@ -3,40 +3,39 @@
  * Configuration
  */
 
-# Array of authorized ip addresses alowed to connect to record & read data
+# array of authorized ip addresses alowed to connect to record & read data
 # if empty, no filters ip adresses
-$ips_read_authorized = array();
+$ips_read_authorized = array('129.20.228.2','129.20.228.3','129.20.228.4','129.20.228.20','188.165.4.35');
 
-# Defines the delay to keep valid the key, is a exponent of 10 seconds
-# Keep the same value with the same variable in /etc/netscan-etc for netscan
+# defines the delay to keep valid the key, is a exponent of 10 seconds
 $key_time_delay = 2;
 # defines the search time for the latest logs in seconds.
 # default is equal to 1 * (periods of cron in seconds ) + 60
 $query_time_delay = 300;
 
 # url or hosname of database
-define('DB_HOST', '');
+define('DB_HOST', 'coworkinurcworg.mysql.db');
 # name of database
-define('DB_NAME', '');
+define('DB_NAME', 'coworkinurcworg');
 # name of user to connect to database
-define('DB_USER', '');
+define('DB_USER', 'coworkinurcworg');
 # password of user to connect to database
-define('DB_PWD', '');
+define('DB_PWD', 'I4xvjyQqA9IRxo');
 
 # table names of database used
 $dbt = array(
 	'presence' => 'netscan_presence',
 	'computer' => 'netscan_computer',
-	'member' => 'netscan_member'
+	'member' => 'wp_users '
 );
 
 # defines the security key
 # if you change the definition of this key, please agjust the definition of key in netscan bash script
 function key_gen($key_time_delay)
 {
-	$key_time = substr(time(), 0, -$key_time_delay);
+	$key_time = substr(time(), 2, -$key_time_delay);
 	$key_hash = hash('sha256', $key_time);
-	return substr($key_hash, 5, 20);
+	return substr($key_hash, 10, 20);
 }
 
 # end line

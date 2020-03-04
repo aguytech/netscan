@@ -14,4 +14,7 @@
 #
 # Example with options for a dual scan on a wired network 'eth0' and a wireless network 'wlan0'
 #*/4 7-19 * * 1-5 root /usr/local/bin/netscan "interface='eth0' ipsrange='128.20.228.0/27' ipsexclude='128.20.228.1,128.20.228.2,128.20.228.3,128.20.228.29,128.20.228.30'" "interface='wlan0' ipsrange='192.168.0.0/24' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101'"
+*/4 7-19 * * 1-5 root /usr/local/bin/netscan "interface='wlan0' ipsrange='192.168.0.0/24' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101'" "interface='eth0' ipsrange='129.20.228.0/27' ipsexclude='129.20.228.1,129.20.228.2,129.20.228.3,129.20.228.29,129.20.228.30'"
+#*/5 7-19 * * 1-5 root /usr/local/bin/netscan "interface='wlan0' ipsrange='192.168.0.0/24' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101' url='https://presence.coworking-lannion.fr/record.php' filelog='/var/log/netscan/netscan.fr.log'" "interface='eth0' ipsrange='129.20.228.0/27' ipsexclude='129.20.228.1,129.20.228.2,129.20.228.3,129.20.228.29,129.20.228.30' url='https://presence.coworking-lannion.fr/record.php' filelog='/var/log/netscan/netscan.fr.log'"
+#*/4 * * * * root /usr/local/bin/netscan "interface='wlan0' ipsrange='192.168.0.0/24' ipsexclude='192.168.0.1,192.168.0.100,192.168.0.101' url='https://presence.coworking-lannion.fr/record.php'" "interface='eth0' ipsrange='129.20.228.0/27' ipsexclude='129.20.228.1,129.20.228.2,129.20.228.3,129.20.228.29,129.20.228.30' url='https://presence.coworking-lannion.fr/record.php'"
 

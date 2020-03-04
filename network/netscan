@@ -64,6 +64,7 @@ _init() {
 	! [ -f "$file" ] && echo "error - unable to find file: '$file'" && exit 1
 	source "$file"
 
+	filelog_default="${filelog_default:-/var/log/netscan/$(basename $0).log}"
 	filelog="${filelog:-$filelog_default}"
 	filelogerr="${filelog%.log}.err"
 	filedebug="${filelog%.log}.debug"
@@ -102,6 +103,9 @@ _init() {
 	#_log_debug "filelog=$filelog"
 	#_log_debug "filelogerr=$filelogerr"
 	#_log_debug "filedebug=$filedebug"
+
+	# missing url
+	[ ! "${url}" ] && echo "URL for backend are not defined - please correct this\nLook at " && exit 1
 
 	# create logs path
 	path="$(dirname $filelog)"

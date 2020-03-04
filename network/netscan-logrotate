@@ -2,7 +2,7 @@
 /var/log/netscan/netscan.log
 /var/log/netscan/netscan.err
 {
-	rotate 5
+	rotate 54
 	weekly
 	missingok
 	notifempty
@@ -14,7 +14,7 @@
 # rotate every day and keep 15 days
 /var/log/netscan/netscan.debug
 {
-	rotate 14
+	rotate 31
 	daily
 	missingok
 	notifempty

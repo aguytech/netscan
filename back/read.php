@@ -41,7 +41,8 @@ function query($sql)
 function last_list($dbt, $time_delayed)
 {
 	# mac left join members
-	$sql = "SELECT MAX(wp.mac) AS mac, MAX(wp.ts) AS ts, member.login AS login, MAX(member.publicname) AS publicname FROM ".$dbt['presence']." AS wp LEFT JOIN (SELECT wpc.mac, ".$dbt['member'].".login, ".$dbt['member'].".publicname FROM ".$dbt['computer']." AS wpc LEFT JOIN (".$dbt['member'].") ON (wpc.id_member = ".$dbt['member'].".id)) AS member ON (wp.mac = member.mac) WHERE wp.ts IN (SELECT MAX(wp1.ts) FROM ".$dbt['presence']." AS wp1) AND wp.ts > FROM_UNIXTIME(".$time_delayed.") GROUP BY login";
+	$sql = "SELECT MAX(wp.mac) AS mac, MAX(wp.ts) AS ts, member.user_login AS login, MAX(member.display_name) AS publicname FROM ".$dbt['presence']." AS wp LEFT JOIN (SELECT wpc.mac, ".$dbt['member'].".user_login, ".$dbt['member'].".display_name FROM ".$dbt['computer']." AS wpc LEFT JOIN (".$dbt['member'].") ON (wpc.id_member = ".$dbt['member'].".id)) AS member ON (wp.mac = member.mac) WHERE wp.ts IN (SELECT MAX(wp1.ts) FROM ".$dbt['presence']." AS wp1) AND wp.ts > FROM_UNIXTIME(".$time_delayed.") GROUP BY login";
+	#$sql = "SELECT MAX(wp.mac) AS mac, MAX(wp.ts) AS ts, member.login AS login, MAX(member.publicname) AS nicename FROM ".$dbt['presence']." AS wp LEFT JOIN (SELECT wpc.mac, ".$dbt['member'].".login, ".$dbt['member'].".publicname FROM ".$dbt['computer']." AS wpc LEFT JOIN (".$dbt['member'].") ON (wpc.id_member = ".$dbt['member'].".id)) AS member ON (wp.mac = member.mac) WHERE wp.ts IN (SELECT MAX(wp1.ts) FROM ".$dbt['presence']." AS wp1) AND wp.ts > FROM_UNIXTIME(".$time_delayed.") GROUP BY login";
 
 	$result = query($sql);
 	$data = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -55,7 +56,8 @@ function last_list($dbt, $time_delayed)
 function last_count($dbt, $time_delayed)
 {
 	// mac left join members
-	$sql = "SELECT COUNT(*) AS count FROM ( SELECT MAX(wp.mac) AS mac, MAX(wp.ts) AS ts, member.login AS login, MAX(member.publicname) AS publicname FROM ".$dbt['presence']." AS wp LEFT JOIN (SELECT wpc.mac, ".$dbt['member'].".login, ".$dbt['member'].".publicname FROM ".$dbt['computer']." AS wpc LEFT JOIN (".$dbt['member'].") ON (wpc.id_member = ".$dbt['member'].".id)) AS member ON (wp.mac = member.mac) WHERE wp.ts IN (SELECT MAX(wp1.ts) FROM ".$dbt['presence']." AS wp1) AND wp.ts > FROM_UNIXTIME(".$time_delayed.") GROUP BY login) AS list";
+	$sql = "SELECT COUNT(*) AS count FROM ( SELECT MAX(wp.mac) AS mac, MAX(wp.ts) AS ts, member.user_login AS login, MAX(member.display_name) AS publicname FROM ".$dbt['presence']." AS wp LEFT JOIN (SELECT wpc.mac, ".$dbt['member'].".user_login, ".$dbt['member'].".display_name FROM ".$dbt['computer']." AS wpc LEFT JOIN (".$dbt['member'].") ON (wpc.id_member = ".$dbt['member'].".id)) AS member ON (wp.mac = member.mac) WHERE wp.ts IN (SELECT MAX(wp1.ts) FROM ".$dbt['presence']." AS wp1) AND wp.ts > FROM_UNIXTIME(".$time_delayed.") GROUP BY login) AS list";
+	#$sql = "SELECT COUNT(*) AS count FROM ( SELECT MAX(wp.mac) AS mac, MAX(wp.ts) AS ts, member.login AS login, MAX(member.publicname) AS nicename FROM ".$dbt['presence']." AS wp LEFT JOIN (SELECT wpc.mac, ".$dbt['member'].".login, ".$dbt['member'].".publicname FROM ".$dbt['computer']." AS wpc LEFT JOIN (".$dbt['member'].") ON (wpc.id_member = ".$dbt['member'].".id)) AS member ON (wp.mac = member.mac) WHERE wp.ts IN (SELECT MAX(wp1.ts) FROM ".$dbt['presence']." AS wp1) AND wp.ts > FROM_UNIXTIME(".$time_delayed.") GROUP BY login) AS list";
 
 	$result = query($sql);
 	$data = $result->fetchAll(PDO::FETCH_COLUMN);

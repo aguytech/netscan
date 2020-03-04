@@ -15,8 +15,8 @@
 #
 interface_default="" # "wlan0"
 ipsrange_default="" # "192.168.0.0/24"
-url_default=""
-filelog_default="/var/log/netscan/$(basename $0).log"
+url_default="https://presence.coworking-lannion.org/record.php"
+filelog_default= # "/var/log/netscan/$(basename $0).log"
 ipsexclude_default="" # "192.168.0.1,192.168.0.100,192.168.0.101"
 macsexclude_default="" # "b8:27:eb:48:ae:35"
 
@@ -29,8 +29,8 @@ key_time_delay=2
 # According with the same function in config.php (netscan backend)
 _key_gen() {
 	base=`date +%s`
-	key=`echo -n "${base:0:-${key_time_delay}}" | sha256sum`
-	key=${key:5:20}
+	key=`echo -n "${base:2:-${key_time_delay}}" | sha256sum`
+	key=${key:10:20}
 	echo $key
 }
 

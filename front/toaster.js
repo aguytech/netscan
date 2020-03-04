@@ -1,4 +1,4 @@
-var toaster_url = "";
+var toaster_url = "https://presence.coworking-lannion.org/read.php?query=last&arg=count";
 
 // get data from URL toaster_url
 function toaster_get(toaster_url) {
