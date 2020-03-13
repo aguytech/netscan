@@ -3,9 +3,18 @@
  * Configuration
  */
 
-# array of authorized ip addresses alowed to connect to record & read data
-# if empty, no filters ip adresses
-$ips_read_authorized = array('129.20.228.2','129.20.228.3','129.20.228.4','129.20.228.20','188.165.4.35');
+# array of allowed ip addresses to connect to record data
+# if empty, no filters request
+$ips_reccord_allowed = array('129.20.228.2','129.20.228.3','129.20.228.4','129.20.228.20','188.165.4.35');
+
+# array of FQDN alowed to connect to read data
+# if empty, no filters request
+$fqdn_read_allowed = array(
+	'http://presence.coworking-lannion.org/',
+	'https://presence.coworking-lannion.org/',
+	'http://www.coworking-lannion.org/',
+	'https://www.coworking-lannion.org/'
+);
 
 # defines the delay to keep valid the key, is a exponent of 10 seconds
 $key_time_delay = 2;

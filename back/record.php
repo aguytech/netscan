@@ -2,10 +2,17 @@
 
 /* require
 */
-$file = 'common.php';
+$file = 'config.php';
 if (!file_exists($file) || !is_readable($file))
 	exit("error - unable to find file '$file'");
 include($file);
+
+/* allowed incoming requests
+*/
+if (!empty($ips_reccord_allowed) && !in_array($_SERVER['REMOTE_ADDR'], $ips_reccord_allowed)) {
+	echo ";o)";
+	exit;
+}
 
 /* data
 */
