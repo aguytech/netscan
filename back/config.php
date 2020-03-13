@@ -4,8 +4,12 @@
  */
 
 # Array of authorized ip addresses alowed to connect to record & read data
-# if empty, no filters ip adresses
-$ips_read_authorized = array();
+# if empty, no filters request
+$ips_reccord_allowed = array();
+
+# array of FQDN alowed to connect to read data
+# if empty, no filters request
+$fqdn_read_allowed = array();
 
 # Defines the delay to keep valid the key, is a exponent of 10 seconds
 # Keep the same value with the same variable in /etc/netscan-etc for netscan

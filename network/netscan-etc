@@ -16,7 +16,7 @@
 interface_default="" # "wlan0"
 ipsrange_default="" # "192.168.0.0/24"
 url_default=""
-filelog_default="/var/log/netscan/$(basename $0).log"
+filelog_default= # "/var/log/netscan/$(basename $0).log"
 ipsexclude_default="" # "192.168.0.1,192.168.0.100,192.168.0.101"
 macsexclude_default="" # "b8:27:eb:48:ae:35"
 

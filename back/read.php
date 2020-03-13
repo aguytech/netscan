@@ -2,10 +2,17 @@
 
 /* require
 */
-$file = 'common.php';
+$file = 'config.php';
 if (!file_exists($file) || !is_readable($file))
 	exit("error - unable to find file '$file'");
 include($file);
+
+/* allowed referer request
+*/
+if (!empty($fqdn_read_allowed) && (! empty($_SERVER['HTTP_REFERER']) && !in_array($_SERVER['HTTP_REFERER'], $fqdn_read_allowed))) {
+	echo ";o)";
+	exit;
+}
 
 /* data
 */
